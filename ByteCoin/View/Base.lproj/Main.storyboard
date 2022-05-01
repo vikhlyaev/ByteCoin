@@ -81,10 +81,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Upm-yN-EKd">
                                 <rect key="frame" x="0.0" y="594" width="390" height="216"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYy-y7-Q4u">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYy-y7-Q4u" userLabel="Crypto Picker">
                                         <rect key="frame" x="0.0" y="0.0" width="195" height="216"/>
                                     </pickerView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-ub-Hlt">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-ub-Hlt" userLabel="Currency Picker">
                                         <rect key="frame" x="195" y="0.0" width="195" height="216"/>
                                     </pickerView>
                                 </subviews>
@@ -103,6 +103,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9IP-Zs-icC" secondAttribute="trailing" id="yul-vx-39o"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cryptoLogo" destination="Kze-sS-Uui" id="WZt-Yb-8HH"/>
+                        <outlet property="cryptoPicker" destination="xYy-y7-Q4u" id="msP-up-tRl"/>
+                        <outlet property="currencyLabel" destination="cw9-9Q-ICk" id="LeV-cy-rHn"/>
+                        <outlet property="currencyPicker" destination="IEu-ub-Hlt" id="pgt-IY-me8"/>
+                        <outlet property="priceLabel" destination="rVp-8u-XKJ" id="Qvf-1X-2yN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
