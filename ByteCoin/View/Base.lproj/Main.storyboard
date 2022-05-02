@@ -81,10 +81,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Upm-yN-EKd">
                                 <rect key="frame" x="0.0" y="594" width="390" height="216"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYy-y7-Q4u" userLabel="Crypto Picker">
+                                    <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYy-y7-Q4u" userLabel="Crypto Picker">
                                         <rect key="frame" x="0.0" y="0.0" width="195" height="216"/>
                                     </pickerView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-ub-Hlt" userLabel="Currency Picker">
+                                    <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-ub-Hlt" userLabel="Currency Picker">
                                         <rect key="frame" x="195" y="0.0" width="195" height="216"/>
                                     </pickerView>
                                 </subviews>
