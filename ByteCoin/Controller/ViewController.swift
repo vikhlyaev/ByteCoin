@@ -24,6 +24,11 @@ class ViewController: UIViewController {
         currencyPicker.delegate = self
         cryptoPicker.dataSource = self
         cryptoPicker.delegate = self
+        
+        coinManager.delegate = self
+        
+        cryptoPicker.selectRow(0, inComponent: 0, animated: true)
+        currencyPicker.selectRow(0, inComponent: 0, animated: true)
     }
 }
 
@@ -35,7 +40,7 @@ extension ViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerView.tag == 1 ? coinManager.cryptoArray.count : coinManager.currencyArray.count
+        return pickerView.tag == 0 ? coinManager.cryptoArray.count : coinManager.currencyArray.count
     }
 }
 
@@ -43,21 +48,30 @@ extension ViewController: UIPickerViewDataSource {
 
 extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerView.tag == 1 ? coinManager.cryptoArray[row] : coinManager.currencyArray[row]
+        return pickerView.tag == 0 ? coinManager.cryptoArray[row] : coinManager.currencyArray[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedCrypto = coinManager.cryptoArray[cryptoPicker.selectedRow(inComponent: 0)]
+        let selectedCurrency = coinManager.currencyArray[currencyPicker.selectedRow(inComponent: 0)]
         
-        var selectedCurrency: String
-        var selectedCrypro: String
-        
-        switch pickerView.tag {
-        case 1: selectedCrypro = coinManager.cryptoArray[row]
-        case 2: selectedCurrency = coinManager.currencyArray[row]
-        default: break
+        coinManager.getPrice(coin: selectedCrypto, for: selectedCurrency)
+    }
+}
+
+//MARK: - CoinManagerDelegate
+
+extension ViewController: CoinManagerDelegate {
+    func didUpdatePrice(_ coinManager: CoinManager, currency: String, coin: String, price: String) {
+        DispatchQueue.main.async {
+            self.cryptoLogo.image = UIImage(named: "Icon\(coin)")
+            self.priceLabel.text = price
+            self.currencyLabel.text = currency
         }
-        
-        // coinManager.getPrice(coin: selectedCrypro, for: selectedCurrency)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
 }
 
